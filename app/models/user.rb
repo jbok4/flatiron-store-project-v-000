@@ -10,4 +10,8 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
+  def create_cart
+    self.current_cart ||= Cart.new
+  end
+
 end
