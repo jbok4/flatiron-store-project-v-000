@@ -3,7 +3,7 @@ class Item < ActiveRecord::Base
   has_many :line_items
 
   def self.available_items
-    self.all.map{|item| item if item.inventory > 0}
+    self.all.map{|item| item if item.inventory > 0}.compact
   end
 
 end
