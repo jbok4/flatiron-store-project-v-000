@@ -12,6 +12,6 @@
 
 <p>Order total: <strong><%= number_to_currency(current_cart.total.to_f/100) %></strong></p>
 
-<% unless current_user.current_cart_id = nil %>
+<% if !(@cart.status == 'submitted') %>
   <%= button_to 'Checkout', checkout_path %>
 <% end %>

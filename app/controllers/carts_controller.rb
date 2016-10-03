@@ -9,10 +9,12 @@ class CartsController < ApplicationController
     @cart.line_items.each do |line_item|
       Item.find(line_item.item_id).decrement(:inventory, line_item.quantity).save
     end
+    @cart.status = "submitted"
+    @cart.save
     current_user.current_cart_id = nil
     current_user.save
-    binding.pry
-    redirect_to cart_path(params[:id])
+    #binding.pry
+    redirect_to cart_path(@cart)
   end
 
 end
