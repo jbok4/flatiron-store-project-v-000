@@ -7,9 +7,11 @@ class CartsController < ApplicationController
   def checkout
     @cart = Cart.find(params[:id])
     @cart.line_items.each do |line_item|
-    Item.find(line_item.item_id).decrement(:inventory, line_item.quantity).save
+      Item.find(line_item.item_id).decrement(:inventory, line_item.quantity).save
     end
-    current_user.current_cart = nil
+    current_user.current_cart_id = nil
+    current_user.save
+    binding.pry
     redirect_to cart_path(params[:id])
   end
 
