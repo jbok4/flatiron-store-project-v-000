@@ -1,9 +1,9 @@
-<%# @categories.each do |category| %>
-  <%#= link_to category.title, category_path(category) %>
-<%# end %>
+<h1>Store Home</h1>
 
-<%# @items.each do |item| %>
-  <p><%#= item.title %> | <%#= number_to_currency(item.price.to_f/100)  %> | <%#= button_to 'Add to Cart', line_items_path(item_id: item) %></p>
-<%# end %>
+<% @categories.each do |category| %>
+  <strong>   <%= link_to category.title, category_path(category) %>   |</strong>   
+<% end %></br>
 
-<h1>Store Index</h1>
+<% @items.each do |item| %>
+  <p><%= item.title %> | <%= number_to_currency(item.price.to_f/100) %><%= button_to 'Add to Cart', line_items_path(item_id: item) %></p></br>
+<% end %>

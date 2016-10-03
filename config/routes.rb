@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   resources :orders, only: [:show]
 
   post 'carts/:id/checkout', to: 'carts#checkout', as: 'checkout'
+  #get '/users/sign_out', to: 'users#sign_out'
 
 end
